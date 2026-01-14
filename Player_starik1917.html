@@ -11,12 +11,8 @@
   <link rel="shortcut icon" href="assets/images/-121x121.png" type="image/x-icon">
   <title>Starik1917 — Sword Land Wiki</title>
 
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <!-- Убираем все Mobirise-стили меню -->
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
@@ -42,9 +38,101 @@
             url("quanto.jpg") center / cover no-repeat fixed;
     }
 
+    /* === КАСТОМНОЕ МЕНЮ === */
+    .custom-navbar {
+        background-color: #2a2a2a;
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #eaeaea;
+        font-size: 1.2rem;
+    }
+
+    .navbar-logo img {
+        height: 2.8rem;
+        filter: invert(1) saturate(0) brightness(150%);
+        margin-right: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin-left: 20px;
+    }
+
+    .nav-links a {
+        color: #eaeaea;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+        color: #fff;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu-custom {
+        display: none;
+        position: absolute;
+        background-color: #2a2a2a;
+        min-width: 160px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+        z-index: 1;
+        border: 1px solid #444;
+    }
+
+    .dropdown-menu-custom a {
+        color: #eaeaea !important;
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-menu-custom a:hover {
+        background-color: #333;
+    }
+
+    .dropdown:hover .dropdown-menu-custom {
+        display: block;
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        width: 30px;
+        height: 20px;
+        justify-content: space-between;
+    }
+
+    .menu-toggle span {
+        height: 3px;
+        width: 100%;
+        background-color: #eaeaea;
+        transition: 0.3s;
+    }
+
     .header {
         text-align: center;
-        padding: 15px 10px 5px;
+        padding: 70px 10px 5px 10px; /* отступ под фиксированное меню */
         font-size: 28px;
         text-shadow: 2px 2px 0 #000;
     }
@@ -73,12 +161,16 @@
 
     .skin-box {
         text-align: center;
-        position: relative;
-        height: 160px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 15px;
     }
 
     .skin-switch {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
 
     .skin-switch button {
@@ -101,7 +193,6 @@
         position: relative;
         width: 140px;
         height: 140px;
-        margin: 0 auto;
     }
 
     .skin-images-container img {
@@ -109,6 +200,7 @@
         top: 0;
         left: 0;
         width: 140px;
+        height: 140px;
         image-rendering: pixelated;
         border: 3px solid #555;
         background: #111;
@@ -155,80 +247,71 @@
         max-height: 600px;
     }
 
-    @media(max-width:800px) {
-        .container { flex-direction: column; }
-        .card { width: 100%; }
-    }
+    /* === МОБИЛЬНАЯ ВЕРСИЯ === */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 15px;
+        }
 
-    .navbar {
-        background-color: #2a2a2a !important;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
+        .nav-links.active {
+            display: flex;
+        }
 
-    .navbar-brand,
-    .navbar-nav .nav-link,
-    .dropdown-item {
-        color: #eaeaea !important;
-    }
+        .nav-links li {
+            margin: 5px 0;
+        }
 
-    .navbar-nav .nav-link:hover,
-    .dropdown-item:hover {
-        color: #fff !important;
-        background-color: #333 !important;
-    }
+        .menu-toggle {
+            display: flex;
+        }
 
-    .navbar-toggler {
-        border-color: #555;
-    }
+        .dropdown-menu-custom {
+            position: static;
+            box-shadow: none;
+            margin-left: 20px;
+            width: calc(100% - 20px);
+        }
 
-    .hamburger span {
-        background: #eaeaea;
+        .header {
+            padding-top: 80px;
+        }
     }
   </style>
 </head>
 
 <body>
 
-  <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="index.html">
-                        <img src="assets/images/-121x121.png" alt="SwordLand" style="height: 3.8rem; filter: invert(1) saturate(0) brightness(150%);">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap">
-                    <a class="navbar-caption display-7" href="index.html" style="color: #eaeaea;">SwordLand</a>
-                </span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item">
-                        <a class="nav-link link display-4" href="players.html">Игроки</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link link dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu">
-                            Сезоны
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item display-4" href="SL1.html">SwordLand 1</a>
-                            <a class="dropdown-item display-4" href="SL2.html">SwordLand 2</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-  </section>
+  <!-- КАСТОМНОЕ МЕНЮ -->
+  <nav class="custom-navbar">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto;">
+      <a href="index.html" class="navbar-brand">
+        <span class="navbar-logo">
+          <img src="assets/images/-121x121.png" alt="SwordLand">
+        </span>
+        SwordLand
+      </a>
+
+      <div class="menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-links" id="mainNav">
+        <li><a href="players.html">Игроки</a></li>
+        <li class="dropdown">
+          <a href="#" style="cursor: pointer;">Сезоны ▼</a>
+          <div class="dropdown-menu-custom">
+            <a href="SL1.html">SwordLand 1</a>
+            <a href="SL2.html">SwordLand 2</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="header">Starik1917</div>
 
@@ -265,7 +348,7 @@
       <div class="block">
         <h3>▶ Описание персонажа</h3>
         <div class="inside">
-          Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land. Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land.
+          Путешественник, раскрывающий аномалии и нестандартные зоны мира Sword Land.
         </div>
       </div>
 
@@ -303,15 +386,13 @@
 
   </div>
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/dropdown/js/nav-dropdown.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-
   <script>
+    // Мобильное меню
+    document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+      document.getElementById('mainNav').classList.toggle('active');
+    });
+
+    // Скины
     const skins = [
       { label: "SL1", src: "/assets/images/skin1_starik1917.png" },
       { label: "SL2", src: "/assets/images/skin2_starik1917.png" },
@@ -344,27 +425,25 @@
 
     function switchSkin(index) {
       if (index === currentSkinIndex) return;
-
       const images = document.querySelectorAll("#skinImagesContainer img");
       const buttons = document.querySelectorAll("#skinButtons button");
-
       images[currentSkinIndex].classList.remove("active");
       buttons[currentSkinIndex].classList.remove("active");
-
       currentSkinIndex = index;
-
       images[currentSkinIndex].classList.add("active");
       buttons[currentSkinIndex].classList.add("active");
     }
 
+    // Раскрытие блоков
     document.querySelectorAll(".block h3").forEach(h => {
       h.addEventListener("click", () => {
         h.parentElement.classList.toggle("open");
       });
     });
 
-    initSkins();
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', initSkins);
   </script>
-<script src="assets/smoothscroll/smooth-scroll.js"></script>
+
 </body>
 </html>
