@@ -39,8 +39,6 @@
             linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
             url("quanto.jpg") center / cover no-repeat fixed;
 
-        padding-top: 80px; /* отступ для фиксированной плашки */
-        box-sizing: border-box;
     }
 
     /* HEADER */
@@ -122,6 +120,11 @@
         cursor:pointer;
         background:#2a2a2a;
     }
+    .container-wrapper {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: inherit; /* наследует фон body */
+    }
     .block h3:hover{ background:#333; }
     .block .inside{
         display:none;
@@ -174,6 +177,9 @@
         </div>
     </nav>
   </section>
+  <div class="container-wrapper">
+  <div class="header">Starik1917</div>
+  </div>
 
   <div class="header">Starik1917</div>
 
