@@ -204,10 +204,15 @@ body {
 
 <script>
 function setSkin(n){
-    document.getElementById("skin").src = n === 1 ? "/assets/images/skin1_starik1917.png" : "/assets/images/skin2_starik1917.png" : "/assets/images/skin3_starik1917.png";
+    const skins = {
+        1: "/assets/images/skin1_starik1917.png",
+        2: "/assets/images/skin2_starik1917.png",
+        3: "/assets/images/skin3_starik1917.png"
+    };
+    document.getElementById("skin").src = skins[n];
 }
 
-/* раскрывающиеся блоки */
+/*раскрывающиеся блоки */
 document.querySelectorAll(".block h3").forEach(h=>{
     h.addEventListener("click", ()=>{
         h.parentElement.classList.toggle("open");
